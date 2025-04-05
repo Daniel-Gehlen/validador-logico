@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validador de Silogismos Aristotélicos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Lógica Aristotélica</h1>
+            <p>Validador de Silogismos e Figuras Clássicas</p>
+        </header>
+
+        <main>
+            <section class="controls">
+                <button id="theory-btn">Teoria</button>
+                <button id="validate-btn">Validar Silogismo</button>
+                <button id="quiz-btn">Modo Quiz</button>
+            </section>
+
+            <section class="theory-section">
+                <div class="theory-content">
+                    <h2>As 4 Figuras do Silogismo</h2>
+                    
+                    <div class="figures-container">
+                        <div class="figure-card">
+                            <h3>1ª Figura</h3>
+                            <p>M — P<br>S — M<br>∴ S — P</p>
+                            <p>Exemplo: Todos humanos são mortais. Todos gregos são humanos. Logo, todos gregos são mortais.</p>
+                        </div>
+                        
+                        <div class="figure-card">
+                            <h3>2ª Figura</h3>
+                            <p>P — M<br>S — M<br>∴ S — P</p>
+                            <p>Exemplo: Nenhum pássaro é mamífero. Todos morcegos são mamíferos. Logo, nenhum morcego é pássaro.</p>
+                        </div>
+                        
+                        <div class="figure-card">
+                            <h3>3ª Figura</h3>
+                            <p>M — P<br>M — S<br>∴ S — P</p>
+                            <p>Exemplo: Alguns gatos são pretos. Todos gatos são animais. Logo, alguns animais são pretos.</p>
+                        </div>
+                        
+                        <div class="figure-card">
+                            <h3>4ª Figura</h3>
+                            <p>P — M<br>M — S<br>∴ S — P</p>
+                            <p>Exemplo: Todo P é M. Algum M é S. Logo, algum S é P.</p>
+                        </div>
+                    </div>
+                    
+                    <h2>Regras de Validade</h2>
+                    <ul class="rules-list">
+                        <li>O termo médio deve estar distribuído em pelo menos uma premissa</li>
+                        <li>Nenhum termo pode estar distribuído na conclusão sem estar nas premissas</li>
+                        <li>Premissas negativas não podem gerar conclusão afirmativa</li>
+                        <li>Se uma premissa é particular, a conclusão também deve ser</li>
+                        <li>Não se pode obter conclusão de duas premissas negativas</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="validate-section hidden">
+                <div class="syllogism-input">
+                    <h3>Insira seu silogismo</h3>
+                    <div class="premises-input">
+                        <div class="premise">
+                            <label>Premissa Maior:</label>
+                            <input type="text" id="major-premise" placeholder="Ex: Todos humanos são mortais">
+                        </div>
+                        <div class="premise">
+                            <label>Premissa Menor:</label>
+                            <input type="text" id="minor-premise" placeholder="Ex: Todos gregos são humanos">
+                        </div>
+                        <div class="premise">
+                            <label>Conclusão:</label>
+                            <input type="text" id="conclusion" placeholder="Ex: Todos gregos são mortais">
+                        </div>
+                    </div>
+                    <button id="check-validity">Verificar Validade</button>
+                    <div class="validation-result"></div>
+                </div>
+                
+                <div class="syllogism-analysis hidden">
+                    <h3>Análise do Silogismo</h3>
+                    <div class="terms-analysis">
+                        <p><strong>Termo Maior (P):</strong> <span id="term-p"></span></p>
+                        <p><strong>Termo Menor (S):</strong> <span id="term-s"></span></p>
+                        <p><strong>Termo Médio (M):</strong> <span id="term-m"></span></p>
+                    </div>
+                    <div class="figure-analysis">
+                        <p><strong>Figura:</strong> <span id="figure"></span></p>
+                    </div>
+                    <div class="rules-analysis">
+                        <h4>Teste das Regras:</h4>
+                        <ul id="rules-list">
+                            <!-- Rules will be inserted here by JS -->
+                        </ul>
+                    </div>
+                    <div class="final-verdict">
+                        <h4>Veredito Final:</h4>
+                        <p id="verdict"></p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="quiz-section hidden">
+                <div class="quiz-container">
+                    <h3>Modo Quiz</h3>
+                    <div class="quiz-progress">Questão <span id="current-question">1</span>/<span id="total-questions">5</span></div>
+                    
+                    <div class="quiz-question">
+                        <p id="question-text">O silogismo a seguir é válido?<br>
+                        "Todos M são P. Todos S são M. Logo, todos S são P."</p>
+                    </div>
+                    
+                    <div class="quiz-options">
+                        <button class="quiz-option" data-correct="true">Válido</button>
+                        <button class="quiz-option" data-correct="false">Inválido</button>
+                    </div>
+                    
+                    <div class="quiz-feedback hidden">
+                        <p id="feedback-text"></p>
+                        <button id="next-question">Próxima Questão</button>
+                    </div>
+                    
+                    <div class="quiz-score">
+                        <p>Pontuação: <span id="score">0</span> acertos de <span id="attempted">0</span> tentativas</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
